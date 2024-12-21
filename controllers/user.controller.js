@@ -104,6 +104,13 @@ export const getUser = async (req, res) => {
         id: true,
         name: true,
         email: true,
+        post: {
+          select: {
+            id: true,
+            title: true,
+            content: true,
+          },
+        },
       },
     });
     if (!currentUser) {

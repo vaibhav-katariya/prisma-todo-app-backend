@@ -16,7 +16,8 @@ app.listen(port, () => {
 });
 
 import userRouter from "./routes/user.route.js";
+import postRouter from "./routes/post.route.js";
 app.use("/api/user", userRouter);
-
+app.use("/api/post", postRouter);
 
 export default app;
