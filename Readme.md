@@ -13,41 +13,41 @@ This is a simple Todo application built with Node.js, Express, Prisma, and Postg
 
 1. Clone the repository:
 
-```sh
-git clone https://github.com/vaibhav-katariya/prisma-todo-app-backend.git
-```
+  ```sh
+  git clone https://github.com/vaibhav-katariya/prisma-todo-app-backend.git
+  ```
 
 2. Navigate to the project directory:
 
-```sh
-cd prisma-todo-app-backend
-```
+  ```sh
+  cd prisma-todo-app-backend
+  ```
 
 3. Install the dependencies:
 
-```sh
-npm install
-```
+  ```sh
+  npm install
+  ```
 
 4. Set up environment variables:
 
-```sh
-DATABASE_URL=your_postgresql_database_url
-JWT_SECRET=your_jwt_secret
-PORT=8000
-```
+  ```sh
+  DATABASE_URL=your_postgresql_database_url
+  JWT_SECRET=your_jwt_secret
+  PORT=8000
+  ```
 
 5. Run database migrations:
 
-```sh
-npx prisma migrate dev
-```
+  ```sh
+  npx prisma migrate dev
+  ```
 
 6. Start the application:
 
-```sh
-npm start
-```
+  ```sh
+  npm start
+  ```
 
 ### API Endpoints
 
@@ -170,5 +170,104 @@ npm start
   ```json
   {
     "message": "User deleted successfully"
+  }
+  ```
+
+#### Post Management
+
+- **Create a new post**
+
+  **Endpoint:** `POST /api/post/create-post`
+
+  **Request Body:**
+
+  ```json
+  {
+    "title": "post_title",
+    "content": "post_content"
+  }
+  ```
+
+  **Response:**
+
+  ```json
+  {
+    "id": "post_id",
+    "title": "post_title",
+    "content": "post_content",
+    "authorId": "user_id"
+  }
+  ```
+
+- **Get all posts**
+
+  **Endpoint:** `GET /api/post/get-posts`
+
+  **Response:**
+
+  ```json
+  [
+    {
+    "id": "post_id",
+    "title": "post_title",
+    "content": "post_content",
+    "author": {
+      "id": "user_id",
+      "name": "user_name"
+    }
+    }
+  ]
+  ```
+
+- **Get a post by ID**
+
+  **Endpoint:** `GET /api/post/get-postBy-id/:id`
+
+  **Response:**
+
+  ```json
+  {
+    "id": "post_id",
+    "title": "post_title",
+    "content": "post_content",
+    "author": {
+    "id": "user_id",
+    "name": "user_name"
+    }
+  }
+  ```
+
+- **Update a post**
+
+  **Endpoint:** `PUT /api/post/update-post/:id`
+
+  **Request Body:**
+
+  ```json
+  {
+    "title": "new_post_title",
+    "content": "new_post_content"
+  }
+  ```
+
+  **Response:**
+
+  ```json
+  {
+    "id": "post_id",
+    "title": "new_post_title",
+    "content": "new_post_content"
+  }
+  ```
+
+- **Delete a post**
+
+  **Endpoint:** `DELETE /api/post/delete-post/:id`
+
+  **Response:**
+
+  ```json
+  {
+    "message": "Post deleted successfully"
   }
   ```
